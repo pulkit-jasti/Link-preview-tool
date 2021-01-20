@@ -10,5 +10,5 @@ app.use(express.static('public'));
 
 app.get('/', (req, res) => {
 	//res.send("I guess it's wrorking then");
-	rs.render('index');
+	res.render('index');
 });
