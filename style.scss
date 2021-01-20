@@ -1,0 +1,23 @@
+//GLOBAL STYLES
+* {
+	margin: 0px;
+	padding: 0px;
+	box-sizing: border-box;
+
+	font-family: monospace;
+}
+
+//MIXIN
+@mixin flexcenter {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+//MAIN CSS
+.landing-page {
+	//overflow-x: hidden;
+	height: 100vh;
+	width: 100%;
+	background-color: lightcoral;
+}

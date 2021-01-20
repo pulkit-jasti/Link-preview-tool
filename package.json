@@ -1,0 +1,28 @@
+{
+	"name": "link-preview-tool",
+	"version": "1.0.0",
+	"description": "A tool to help you check your website meta data",
+	"main": "server.js",
+	"scripts": {
+		"start": "node server.js",
+		"test": "nodemon server.js",
+		"deploy": "git push && git push heroku master"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/pulkit-jasti/Link-preview-tool.git"
+	},
+	"author": "Pulkit Jasti <pulkit.jasti@gmail.com>",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/pulkit-jasti/Link-preview-tool/issues"
+	},
+	"homepage": "https://github.com/pulkit-jasti/Link-preview-tool#readme",
+	"dependencies": {
+		"cheerio": "^1.0.0-rc.5",
+		"express": "^4.17.1",
+		"get-urls": "^10.0.0",
+		"node-fetch": "^2.6.1",
+		"pug": "^3.0.0"
+	}
+}
