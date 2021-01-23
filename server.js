@@ -19,27 +19,40 @@ app.get('/', (req, res) => {
 	});
 });
 
-/*https://www.youtube.com/watch?v=PLzF5Ooot9g https://fireship.io https://www.thenetninja.co.uk/*/
+/* https://hacksrm.tech/https://www.youtube.com/watch?v=PLzF5Ooot9g https://fireship.io https://www.thenetninja.co.uk/*/
 
 app.post('/', (req, res) => {
 	console.log(req.body);
 	const data = req.body;
 
-	fetch(data.URL)
-		.then(res => res.text())
-		.then(data => {
-			const $ = cheerio.load(data);
-			const title = $('title').first().text();
-			const icon = $("link[rel='shortcut icon']").attr('href');
-			const description = $("meta[name='description']").attr('content');
+	const URLs = Array.from(getURLs(data.URLs));
 
+	async function getMeta(URL) {
+		let response = await fetch(URL);
+		let data = await response.text();
+
+		const $ = cheerio.load(data);
+
+		const getTagData = propName =>
+			$(`meta[name='${propName}']`).attr('content') ||
+			$(`meta[property='twitter:${propName}']`).attr('content') ||
+			$(`meta[property='og:${propName}']`).attr('content');
+
+		return {
+			URL: URL,
+			title: $('title').first().text(),
+			icon: URL + '/' + ($("link[rel='shortcut icon']").attr('href') || $("link[rel='icon']").attr('href')),
+			img: getTagData('image'),
+			des: getTagData('description'),
+		};
+	}
+
+	Promise.all(URLs.map(el => getMeta(el)))
+		.then(data => {
+			console.log(data);
 			res.render('index', {
-				objj: {
-					title: title,
-					icon: icon,
-					des: description,
-				},
+				objj: data,
 			});
 		})
-		.catch(err => console.log(err));
+		.catch(console.log);
 });

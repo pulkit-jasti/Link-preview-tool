@@ -10,10 +10,15 @@ html(lang="en")
             .landing-page
                 p Lorem ipsum dolor sit amet consectetur, adipisicing elit. Saepe corporis eius ducimus adipisci deleniti maiores necessitatibus. Qui explicabo perferendis asperiores voluptates, veniam delectus ratione nobis quo exercitationem. Omnis, cupiditate ratione.
                 form(action="/", method="post")
-                    input(type="text" name="URL")
                     textarea(name="URLs", cols="30", rows="10")
                     button(type='submit') Submit
-                
-                p   Title: #{objj.title}
-                p   Icon: #{objj.icon}
-                p   Description: #{objj.des}
+
+                .card-container
+                    for page in objj
+                        .card-wrapper
+                            img(src=page.img, alt="website image")
+                            .title-container
+                                p Title: #{page.title}
+                                img(src=page.icon, alt="icon")
+                            p=page.URL
+                            p=page.des
