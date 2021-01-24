@@ -2,15 +2,16 @@ html(lang="en")
     head
         meta(charset="UTF-8")
         meta(name="viewport", content="width=device-width, initial-scale=1.0")
-        title Document
+        title Link Preview Tool
 
         link(rel="stylesheet", href="/style.min.css")
+        link(rel="shortcut icon", href="/favicon.png")
     body
         main
             .landing-page
-                p(class='info') Enter URLs in the text area below separated with spaces to your link preview
+                p(class='info') Enter URLs in the text area below separated with spaces to get your link preview
 
-                form(action="/", method="post")
+                form(action="/", method="POST")
                     textarea(name="URLs")
                     button(type='submit') Submit
 
