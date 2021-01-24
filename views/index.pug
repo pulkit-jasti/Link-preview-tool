@@ -8,17 +8,18 @@ html(lang="en")
     body
         main
             .landing-page
-                p Lorem ipsum dolor sit amet consectetur, adipisicing elit. Saepe corporis eius ducimus adipisci deleniti maiores necessitatibus. Qui explicabo perferendis asperiores voluptates, veniam delectus ratione nobis quo exercitationem. Omnis, cupiditate ratione.
+                p(class='info') Enter URLs in the text area below separated with spaces to your link preview
+
                 form(action="/", method="post")
-                    textarea(name="URLs", cols="30", rows="10")
+                    textarea(name="URLs")
                     button(type='submit') Submit
 
                 .card-container
                     for page in objj
                         .card-wrapper
-                            img(src=page.img, alt="website image")
+                            img(src=page.img, alt="website image", class='cover-img')
                             .title-container
-                                p Title: #{page.title}
-                                img(src=page.icon, alt="icon")
-                            p=page.URL
+                                img(src=page.icon, alt="icon", class='icon')
+                                p(class='title')=page.title
+                            p(class='url')=page.URL
                             p=page.des
