@@ -6,7 +6,7 @@
 	"scripts": {
 		"start": "node server.js",
 		"test": "nodemon server.js",
-		"deploy": "git push && git push heroku master"
+		"push": "git push && git push heroku master"
 	},
 	"repository": {
 		"type": "git",
